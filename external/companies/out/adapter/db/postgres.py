@@ -20,6 +20,5 @@ def get_cursor():
 
 def save_records(data):
     cursor = get_cursor()
-    query = """ insert into companies_report 
-    select * from json_populate_recordset(NULL::companies_report, %s) """
-    cursor.execute(query, (json.dumps(data),))
+    query = """insert into companies_report(id, companies_list, create_date) VALUES (%s, %s, %s)"""
+    cursor.execute(query, (data.id, json.dumps(data.companies_list), data.created_date))
