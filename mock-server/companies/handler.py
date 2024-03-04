@@ -31,7 +31,7 @@ class CompanyHandler(tornado.web.RequestHandler):
         faker = Faker()
         faker.add_provider(address)
         faker.add_provider(company)
-        companies_size = random.randint(5,10)
+        companies_size = random.randint(100,500)
         companies = []
         for _ in range(companies_size):
             address_fake = Address(
