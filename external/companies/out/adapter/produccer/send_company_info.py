@@ -8,5 +8,5 @@ def send_company_report(report):
     channel.basic_publish(exchange='',
                         routing_key='company_report',
                         body=json.dumps(report))
-    print(" [x] Sent 'Send company information report'")
+    print(" ", end="")
     connection.close()

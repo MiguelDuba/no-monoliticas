@@ -19,11 +19,13 @@ def get_file_data(config, file_name):
     # Read and store file from FTP
     with open(f'temp/{file_name}', 'wb') as fp:
         ftp.retrbinary(f'RETR {file_name}', fp.write)
-    ftp.quit()
+        ftp.quit()
     # Read file
-    temp_file = open(f'temp/{file_name}')
-    data = json.load(temp_file)
-    temp_file.close()
+    data = None
+    with open(f'temp/{file_name}', 'r') as temp_file:
+        data = json.load(temp_file)
+        temp_file.close()
     os.remove(f'temp/{file_name}')
-    print(data)
+    if data is None:
+        print('data None')
     return data
