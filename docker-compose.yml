@@ -19,7 +19,20 @@ services:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_USER=admin
       - POSTGRES_DB=companies_db
+  
+  ftp:
+    image: garethflowers/ftp-server
+    environment:
+      - FTP_PASS=123
+      - FTP_USER=user
+    ports:
+      - '20-21:20-21/tcp'
+      - '40000-40009:40000-40009/tcp'
+    volumes:
+      - ftp:/home/user
+
 
 volumes:
   db-data:
   rabbitmq:
+  ftp:
