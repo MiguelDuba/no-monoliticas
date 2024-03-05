@@ -6,17 +6,17 @@ A continuación, presentamos el paso a paso para desplegar la aplicación desarr
  
 ## 1. Descargar el repositorio desde github en la siguiente URL:
         (https://github.com/MiguelDuba/no-monoliticas.)
+
+        Si las carpetas "api" y "core" de este proyecto descargan en MAYUSCULAS, se deben cambiar a minusculas, para que el proyecto compile sin problema.
  
 ## 2. Levantar los docker con el siguiente comando:
        
         docker-compose up -d db-house rabbitmq
        
- 
 ## 3. Pasarse a la carpeta del microservicio.
        
         cd  no-monoliticas/captura_informacion_manual
        
- 
 ## 4. Crear el entorno virtual.
        
        
