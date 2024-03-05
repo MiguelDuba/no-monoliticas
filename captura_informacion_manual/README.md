@@ -38,6 +38,9 @@ A continuación, presentamos el paso a paso para desplegar la aplicación desarr
         
 
 ## 6. Iniciar el microservicio.
+
+        Para iniciar el microservicio ejecutamos el siguiente comando.
+
         python main.py
 
         Se debe ver asi >
@@ -51,6 +54,16 @@ A continuación, presentamos el paso a paso para desplegar la aplicación desarr
             Press CTRL+C to quit
 
 ## 7. Luego desde postman se crear una informacion.
+
+        Adjunto el ejemplo del postman utilizado para el experimento.
+
+                {
+                        "id": "1",
+                        "direccion": "Esta es la direccion",
+                        "habitaciones":"5",
+                        "banos": "2",
+                        "descripcion": "casa ultimo modelo 2025"
+                }
 
 
 
