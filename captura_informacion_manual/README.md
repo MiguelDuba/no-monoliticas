@@ -55,6 +55,9 @@ A continuación, presentamos el paso a paso para desplegar la aplicación desarr
 
 ## 7. Luego desde postman se crear una informacion.
 
+
+        HTTP://127.0.0.1:3005/api/house/create
+
         Adjunto el ejemplo del postman utilizado para el experimento.
 
                 {
