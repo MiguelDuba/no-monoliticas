@@ -20,7 +20,7 @@ def start_companies_check(ch, method, properties, body):
         companies_report = get_ftp(server)
     else:
         print("Type not implemented yet")
-        pass
+        return
     report = Report(str(uuid.uuid4()), companies_report["companies"], datetime.now(timezone.utc))
     print(f"Record to create {report.id} with {len(report.companies_list)} with date {report.created_date}")
     save_company_report(report)

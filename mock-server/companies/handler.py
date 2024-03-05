@@ -49,9 +49,8 @@ class CompanyHandler(tornado.web.RequestHandler):
                 address_fake.__dict__
             )
             companies.append(company_fake.__dict__)
+        print(f"Send {len(companies)} from mock server")
         response = {
             "companies" : companies
         }
         self.finish(json.dumps(response))
-
-
