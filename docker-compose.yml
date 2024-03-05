@@ -9,7 +9,7 @@ services:
       - rabbitmq:/var/lib/rabbitmq/
       - rabbitmq:/var/log/rabbitmq
 
-  db:
+  db-company:
     image: postgres:16.2
     volumes:
       - db-data:/var/lib/postgresql/data
@@ -20,6 +20,17 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_DB=companies_db
   
+  db-house:
+    image: postgres:16.2
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - 5435:5432
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=houses_db
+
   ftp:
     image: garethflowers/ftp-server
     environment:

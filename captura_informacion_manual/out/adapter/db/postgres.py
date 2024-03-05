@@ -3,11 +3,11 @@ import json
 
 
 def get_cursor():
-    conn = psycopg2.connect(database="companies_db",
+    conn = psycopg2.connect(database="houses_db",
                         host="localhost",
                         user="admin",
                         password="admin",
-                        port="5432")
+                        port="5435")
     conn.autocommit = True
     cursor = conn.cursor()
     return cursor
@@ -33,20 +33,5 @@ def create_tables():
     
 def create_house(data):
     cursor = get_cursor()
-    query = """ insert into houses(id, direccion, habitaciones, banos,descripcion, created_date) VALUES (%s, %s, %s, %s, %s, %s) """
-    cursor.execute(query, (data.id, data.direccion, data.habitaciones, data.banos, data.descripcion, data.created_date))
-
-def get_server(name):
-    cursor = get_cursor()
-    query = """ select id, name, type, config, created_date from server where name = %s """
-    cursor.execute(query, (name,))
-    print(f"Found {name} {cursor.rowcount}")
-    if cursor.rowcount == 0:
-        return None
-    else:
-        server = None
-        row = cursor.fetchone()
-        while row is not None:
-            server = row
-            row = cursor.fetchone()
-        return row_to_server(server)
+    query = """ insert into houses(id, direccion, habitaciones, banos,descripcion, created_date) VALUES (%s, %s, %s, %s, %s, CURRENT_TIMESTAMP) """
+    cursor.execute(query, (data.id, data.direccion, data.habitaciones, data.banos, data.descripcion))
