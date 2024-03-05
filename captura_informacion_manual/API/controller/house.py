@@ -17,7 +17,7 @@ def hello_world():
 @users_api.route('/api/house/create', methods = ['POST'])
 def create_user():
     json = request.get_json()
-    fields_request = ['id','direccion','habitaciones','banos','descripcion']
+    fields_request = ["name", "age", "description", "address"]
 
     for field in fields_request:
         if field not in json:
