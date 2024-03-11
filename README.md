@@ -11,7 +11,8 @@ A continuación, presentamos el paso a paso para desplegar la aplicación desarr
  
 ## 2. Levantar los docker con el siguiente comando:
        
-        docker-compose up -d db-house rabbitmq
+        docker-compose up -d db-capturainformacion rabbitmq
+        docker-compose up -d rabbitmq db-informacionmanual
        
 ## 3. Pasarse a la carpeta del microservicio.
        
