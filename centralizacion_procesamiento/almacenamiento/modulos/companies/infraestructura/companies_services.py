@@ -1,6 +1,6 @@
 import json, uuid
-from out.adapter.db.postgres import guardar_informacion_compania, create_tables
-from ..domain.compania import Address, Company
+from centralizacion_procesamiento.config.db import guardar_informacion_compania, create_tables
+from ...modulos.companies.dominio.compania import Address, Company
 
 
 def guardar_info_companias(ch, method, properties, body):

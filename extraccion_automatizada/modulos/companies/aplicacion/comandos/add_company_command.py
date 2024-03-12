@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, Blueprint
-from ..request.companies_resques import AddCompany, AddAddres
-from core.service.company_service import add_companies_service
+from ..dto import AddCompany, AddAddres
+from ...dominio.company_service import add_companies_service
 
 companies_blueprint = Blueprint('companie', __name__)
 
@@ -17,4 +17,5 @@ def add_company():
     addres = AddAddres (json['address']['address1'], json['address']['address2'], json['address']['address3'],  json['address']['contry'],  json['address']['zip_code'],  json['address']['city'])
     result = AddCompany(json['name'], json['age'], json['description'],  addres)
     add_companies_service(result)
-    return "Compañía creada", 201
+    
+    return "Compañía agregada", 201

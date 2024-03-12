@@ -1,6 +1,6 @@
 import sys, os
-from core.services.companies_services import seed_companies_db
-from api.companies import start_listen_for_companies
+from ..almacenamiento.modulos.companies.infraestructura.companies_services import seed_companies_db
+from ..almacenamiento.modulos.companies.aplicacion.comandos.add_company_command import start_listen_for_companies
 
 if __name__ == '__main__':
     try:
