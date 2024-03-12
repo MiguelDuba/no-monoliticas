@@ -8,8 +8,8 @@ services:
     volumes:
       - rabbitmq:/var/lib/rabbitmq/
       - rabbitmq:/var/log/rabbitmq
-
-  db:
+ 
+  db-company-report:
     image: postgres:16.2
     volumes:
       - db-data:/var/lib/postgresql/data
@@ -19,7 +19,29 @@ services:
       - POSTGRES_PASSWORD=admin
       - POSTGRES_USER=admin
       - POSTGRES_DB=companies_db
-  
+ 
+  db-house:
+    image: postgres:16.2
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - 5435:5432
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=houses_db
+
+  db-company:
+    image: postgres:16.2
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - 5434:5432
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=companies_db
+ 
   ftp:
     image: garethflowers/ftp-server
     environment:
@@ -30,8 +52,8 @@ services:
       - '40000-40009:40000-40009/tcp'
     volumes:
       - ftp:/home/user
-
-
+ 
+ 
 volumes:
   db-data:
   rabbitmq:
