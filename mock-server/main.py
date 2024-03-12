@@ -1,12 +1,14 @@
 import asyncio
 import tornado
 from companies.handler import *
+from cadastral.handler import *
 
 
 
 def make_app():
     return tornado.web.Application([
         (r"/companies", CompanyHandler),
+        (r"/cadastral", CadastralHandler)
     ])
 
 async def main():
