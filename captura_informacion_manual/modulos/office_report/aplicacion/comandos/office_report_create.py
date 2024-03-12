@@ -1,7 +1,6 @@
 from flask import Flask
 from flask import jsonify, request, Blueprint
 from ..dto import CreateOfficeReport
-
 from ...dominio.service import create_office_report_service
 
 office_report_api = Blueprint('office-report', __name__)

@@ -14,7 +14,7 @@ def get_cursor():
 
 def create_tables():
     cursor = get_cursor()
-    # company report table
+    # office report table
     cursor.execute(
             """ create table if not exists officereport(
             id text,
@@ -24,3 +24,18 @@ def create_tables():
             descripcion text,
             created_date TIMESTAMP) """
         )
+    
+        # office report table
+    cursor.execute(
+            """ create table if not exists sagalog(
+            id text,
+            transaction_id text,
+            step text,
+            status text,
+            details text,
+            resultado text,
+            create_time TIMESTAMP,
+            end_time TIMESTAMP) """
+        )
+    
+
