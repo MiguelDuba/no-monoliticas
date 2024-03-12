@@ -15,14 +15,12 @@ class Address:
         self.zip_code = zip_code
         self.city = city
 
-class Company:
-    def __init__(self, name, age, description, address) -> None:
-        self.name = name
+class Cadastral:
+    def __init__(self, age, address) -> None:
         self.age = age
-        self.description = description
         self.address = address
 
-class CompanyHandler(tornado.web.RequestHandler):
+class CadastralHandler(tornado.web.RequestHandler):
     
     def set_default_headers(self):
         self.set_header("Content-Type", 'application/json')
@@ -30,10 +28,9 @@ class CompanyHandler(tornado.web.RequestHandler):
     def get(self):
         faker = Faker()
         faker.add_provider(address)
-        faker.add_provider(company)
-        companies_size = random.randint(100,500)
-        companies = []
-        for _ in range(companies_size):
+        cadastal_size = random.randint(100,500)
+        houses = []
+        for _ in range(cadastal_size):
             address_fake = Address(
                 faker.street_address(),
                 faker.street_name(),
@@ -42,15 +39,13 @@ class CompanyHandler(tornado.web.RequestHandler):
                 faker.postcode(),
                 faker.city()
             )
-            company_fake = Company(
-                faker.company(),
+            house_fake = Cadastral(
                 random.randint(5,50),
-                faker.bs(),
                 address_fake.__dict__
             )
-            companies.append(company_fake.__dict__)
-        print(f"Send Company {len(companies)} from mock server")
+            houses.append(house_fake.__dict__)
+        print(f"Send  Cadastral {len(houses)} from mock server")
         response = {
-            "companies" : companies
+            "houses" : houses
         }
         self.finish(json.dumps(response))
