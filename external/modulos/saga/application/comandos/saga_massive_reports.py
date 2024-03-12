@@ -12,8 +12,8 @@ def saga_log_start(id, status, step, server):
     log = SagaLog(id, step, server , status, datetime.now(timezone.utc),None)
     insert_saga_log(log)
 
-def update_log_start(id, status, step):
-    log = SagaLog(id, step, None, status, None, None)
+def update_log_start(id, status, step, server):
+    log = SagaLog(id, step, server, status, None, None)
     update_saga_log(log)
 
 def consulta_comando_company(server, id):
@@ -21,9 +21,9 @@ def consulta_comando_company(server, id):
     try:
         compania = ConsultarCompaniaServidor(id, server.name)
         consultar_servidor_compania(compania)
-        update_log_start(id, "DONE", "ConsultarCompanies")
+        update_log_start(id, "DONE", "ConsultarCompanies", server.name)
     except Exception:
-        update_log_start(id, "ERROR", "ConsultarCompanies")
+        update_log_start(id, "ERROR", "ConsultarCompanies", server.name)
         evento_massive_report_fail(id, server.name, "ConsultarCompanies")
     
 def consulta_comando_catastral(server, id):
@@ -31,9 +31,9 @@ def consulta_comando_catastral(server, id):
     try:
         compania = ConsultarCatastralServidor(id, server.name)
         consultar_servidor_catrastal(compania)
-        update_log_start(id, "DONE", "ConsultarCastastral")
+        update_log_start(id, "DONE", "ConsultarCastastral",server.name)
     except Exception:
-        update_log_start(id, "ERROR", "ConsultarCastastral")
+        update_log_start(id, "ERROR", "ConsultarCastastral", server.name)
         evento_massive_report_fail(id, server.name, "ConsultarCastastral")
 
 def iniciar():

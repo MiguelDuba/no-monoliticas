@@ -9,5 +9,5 @@ def insert_saga_log(log):
 
 def update_saga_log(log):
     cursor = get_cursor()
-    query = """ update saga_log set status = %s,finished_date = CURRENT_TIMESTAMP where id = %s AND step = %s """
-    cursor.execute(query, (log.status, log.id, log.step))
+    query = """ update saga_log set status = %s,finished_date = CURRENT_TIMESTAMP where id = %s AND step = %s AND server = %s"""
+    cursor.execute(query, (log.status, log.id, log.step, log.server))
