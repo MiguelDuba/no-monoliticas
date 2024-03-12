@@ -7,6 +7,6 @@ def initialize_saga_log(data):
 
 def update_saga_log(data):
     cursor = get_cursor()
-    query = """UPDATE sagalog SET end_time = CURRENT_TIMESTAMP, step = %s , status = %s , resultado = %s WHERE transaction_id = %s"""
-    cursor.execute(query, (data.step, data.status , data.resultado , data.transaction_id))
+    query = """UPDATE sagalog SET end_time = CURRENT_TIMESTAMP, step = %s , status = %s , resultado = %s , details = %s WHERE transaction_id = %s"""
+    cursor.execute(query, (data.step, data.status , data.resultado , data.details , data.transaction_id))
     
